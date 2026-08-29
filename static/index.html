@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vuelos · buscador VATSIM</title>
+<style>
+:root {
+  --bg: #0e1116; --panel: #171c24; --panel2: #1f2630; --border: #2a3442;
+  --text: #dbe2ea; --muted: #8a97a6; --accent: #4fc3f7; --accent2: #7c4dff;
+  --ok: #4caf7d; --warn: #e6a23c; --bad: #e5646c;
+}
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; line-height:1.45; }
+header { padding:22px 20px 8px; max-width:960px; margin:0 auto; }
+h1 { margin:0; font-size:1.5rem; letter-spacing:.3px; }
+.sub { color:var(--muted); margin:4px 0 0; font-size:.9rem; }
+nav { max-width:960px; margin:14px auto 0; padding:0 20px; display:flex; gap:8px; }
+.tab { background:var(--panel); color:var(--muted); border:1px solid var(--border);
+  border-bottom:none; padding:9px 16px; border-radius:8px 8px 0 0; cursor:pointer; font-size:.95rem; }
+.tab.active { color:var(--text); background:var(--panel2); border-color:var(--accent); }
+main { max-width:960px; margin:0 auto; padding:0 20px 60px; }
+.panel { display:none; background:var(--panel2); border:1px solid var(--border);
+  border-radius:10px; padding:18px; margin-top:0; }
+.panel.active { display:block; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:640px) { .grid2 { grid-template-columns:1fr; } }
+label { display:block; font-size:.85rem; color:var(--muted); margin-bottom:8px; }
+input, select { width:100%; margin-top:4px; background:var(--bg); color:var(--text);
+  border:1px solid var(--border); border-radius:6px; padding:8px 10px; font-size:.95rem; }
+.check { display:flex; align-items:center; gap:8px; margin-top:22px; }
+.check input { width:auto; margin:0; }
+.btn { margin-top:12px; padding:9px 18px; background:var(--accent); color:#0a0d12;
+  border:none; border-radius:6px; font-weight:600; cursor:pointer; font-size:.95rem; }
+.btn.primary { background:var(--accent2); color:#fff; }
+.btn:hover { filter:brightness(1.1); }
+.btn.danger { background:transparent; color:var(--bad); border:1px solid var(--bad);
+  margin-top:4px; padding:4px 10px; font-weight:400; }
+.hint { color:var(--muted); font-size:.8rem; margin-top:8px; }
+.results { margin-top:16px; display:flex; flex-direction:column; gap:10px; }
+.card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:12px 14px; }
+.card .head { display:flex; justify-content:space-between; align-items:baseline; gap:8px; flex-wrap:wrap; }
+.card .title { font-weight:600; font-size:1rem; }
+.card .meta { color:var(--muted); font-size:.82rem; margin-top:3px; }
+.badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:.72rem;
+  font-weight:600; margin-left:6px; }
+.badge.real { background:#173a2b; color:var(--ok); }
+.badge.inv { background:#3a2f17; color:var(--warn); }
+.badge.ok { background:#173a2b; color:var(--ok); }
+.badge.used { background:#3a171c; color:var(--bad); }
+a.simbrief { display:inline-block; margin-top:8px; padding:6px 12px; background:#1e2a3a;
+  color:var(--accent); border:1px solid var(--accent); border-radius:6px;
+  text-decoration:none; font-size:.85rem; font-weight:600; }
+a.simbrief:hover { background:#2a3c52; }
+.empty { color:var(--muted); font-size:.9rem; padding:12px 2px; }
+.muted { color:var(--muted); }
+.row { display:flex; gap:8px; flex-wrap:wrap; }
+.row input { width:auto; flex:1; min-width:90px; }
+.tag { color:var(--accent); font-family:ui-monospace, monospace; }
+</style>
+</head>
+<body>
+<header>
+  <h1>✈️ Vuelos</h1>
+  <p class="sub">Rutas reales · liveries · planes con SimBrief, para volar en VATSIM</p>
+</header>
+
+<nav>
+  <button class="tab active" data-tab="buscar">Buscar rutas</button>
+  <button class="tab" data-tab="liveries">Liveries</button>
+  <button class="tab" data-tab="plan">Planear vuelo</button>
+</nav>
+
+<main>
+  <section id="tab-buscar" class="panel active">
+    <div class="grid2">
+      <label>Origen (aeropuerto)
+        <input id="b-origen" list="airport-list" placeholder="SAEZ / EZE / Buenos Aires">
+      </label>
+      <label>O país
+        <input id="b-pais" list="country-list" placeholder="Argentina">
+      </label>
+      <label>Aerolínea (opcional)
+        <input id="b-aerolinea" list="airline-list" placeholder="AR / ARG / Aerolíneas Argentinas">
+      </label>
+      <label>Duración máx (hs)
+        <input id="b-hours" type="number" min="0.5" max="12" step="0.5" value="2">
+      </label>
+    </div>
+    <button id="b-btn" class="btn">Buscar rutas</button>
+    <p class="hint">Si no ponés origen, buscá por país. Dejá aerolínea vacía para ver todas.</p>
+    <div id="b-results" class="results"></div>
+  </section>
+
+  <section id="tab-liveries" class="panel">
+    <div class="grid2">
+      <label>Filtrar por avión
+        <select id="l-aircraft"><option value="">Todos</option></select>
+      </label>
+      <div class="add-form row">
+        <input id="l-aircraft-add" placeholder="B738" maxlength="6">
+        <input id="l-airline-add" placeholder="ARG" maxlength="3">
+        <input id="l-livery-add" placeholder="Livery (ej. 70 años)">
+        <button id="l-add" class="btn">Agregar</button>
+      </div>
+    </div>
+    <div id="l-results" class="results"></div>
+  </section>
+
+  <section id="tab-plan" class="panel">
+    <div class="grid2">
+      <label>Origen *
+        <input id="p-origen" list="airport-list" placeholder="SAEZ">
+      </label>
+      <label>Destino (opcional)
+        <input id="p-dest" list="airport-list" placeholder="vacío = invento uno">
+      </label>
+      <label>Aerolínea (opcional)
+        <input id="p-aerolinea" list="airline-list" placeholder="AR / ARG">
+      </label>
+      <label>Avión (tipo ICAO)
+        <input id="p-avion" list="aircraft-list" placeholder="B738 / A20N">
+      </label>
+      <label>Duración máx (hs)
+        <input id="p-hours" type="number" min="0.5" max="12" step="0.5" value="2">
+      </label>
+      <label class="check"><input id="p-invent" type="checkbox"> Inventar ruta aunque exista</label>
+    </div>
+    <button id="p-btn" class="btn primary">Generar plan</button>
+    <div id="p-results" class="results"></div>
+  </section>
+</main>
+
+<datalist id="airport-list"></datalist>
+<datalist id="airline-list"></datalist>
+<datalist id="country-list"></datalist>
+<datalist id="aircraft-list"></datalist>
+
+<script>
+// Vuelos · frontend — inline (patrón task-tracker: evita rewrite doble del gateway)
+const API = '/api';
+const $ = (id) => document.getElementById(id);
+
+document.querySelectorAll('.tab').forEach((t) => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach((x) => x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach((x) => x.classList.remove('active'));
+    t.classList.add('active');
+    $('tab-' + t.dataset.tab).classList.add('active');
+  });
+});
+
+function setupAutocomplete(inputId, listId, url, field) {
+  const input = $(inputId), list = $(listId);
+  let t = null;
+  input.addEventListener('input', () => {
+    clearTimeout(t);
+    const q = input.value.trim();
+    if (q.length < 2) { list.innerHTML = ''; return; }
+    t = setTimeout(async () => {
+      try {
+        const r = await fetch(`${API}/${url}?q=${encodeURIComponent(q)}&limit=12`);
+        const items = await r.json();
+        list.innerHTML = items.map((it) => `<option value="${it[field]}">${it.name ?? ''}</option>`).join('');
+      } catch (e) {}
+    }, 250);
+  });
+}
+setupAutocomplete('b-origen', 'airport-list', 'airports', 'icao');
+setupAutocomplete('p-origen', 'airport-list', 'airports', 'icao');
+setupAutocomplete('p-dest', 'airport-list', 'airports', 'icao');
+setupAutocomplete('b-aerolinea', 'airline-list', 'airlines', 'icao');
+setupAutocomplete('p-aerolinea', 'airline-list', 'airlines', 'icao');
+
+(async () => {
+  const r = await fetch(`${API}/countries`);
+  const cs = await r.json();
+  $('country-list').innerHTML = cs.map((c) => `<option value="${c.country}"></option>`).join('');
+})();
+
+async function refreshAircraft() {
+  const r = await fetch(`${API}/aircraft`);
+  const types = await r.json();
+  $('aircraft-list').innerHTML = types.map((t) => `<option value="${t}"></option>`).join('');
+  const sel = $('l-aircraft');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">Todos</option>' + types.map((t) => `<option value="${t}">${t}</option>`).join('');
+  sel.value = cur;
+}
+
+$('b-btn').addEventListener('click', buscarRutas);
+$('b-origen').addEventListener('keydown', (e) => { if (e.key === 'Enter') buscarRutas(); });
+$('b-pais').addEventListener('keydown', (e) => { if (e.key === 'Enter') buscarRutas(); });
+
+async function buscarRutas() {
+  const origin = $('b-origen').value.trim();
+  const country = $('b-pais').value.trim();
+  const airline = $('b-aerolinea').value.trim();
+  const max_hours = parseFloat($('b-hours').value) || 2;
+  const params = new URLSearchParams({ max_hours, limit: 80 });
+  if (origin) params.set('origin', origin);
+  else if (country) params.set('country', country);
+  if (airline) params.set('airline', airline);
+  const el = $('b-results');
+  el.innerHTML = '<div class="empty">Buscando…</div>';
+  try {
+    const r = await fetch(`${API}/search?${params}`);
+    if (!r.ok) { el.innerHTML = `<div class="empty">${(await r.json()).detail ?? 'Error'}</div>`; return; }
+    const items = await r.json();
+    if (!items.length) { el.innerHTML = '<div class="empty">Sin rutas con esos filtros (¿probaste otro país u origen?).</div>'; return; }
+    el.innerHTML = items.map((it) => `
+      <div class="card">
+        <div class="head">
+          <span class="title">${it.src} → ${it.dst} <span class="tag">${it.airline}</span></span>
+          <span class="badge real">real</span>
+        </div>
+        <div class="meta">${it.src_name} → ${it.dst_name}</div>
+        <div class="meta">${it.km ? it.km + ' km' : ''} ${it.hours ? '· ~' + it.hours + ' hs' : ''}${it.equipment ? ' · ' + it.equipment : ''}</div>
+      </div>`).join('');
+  } catch (e) {
+    el.innerHTML = '<div class="empty">Error de conexión.</div>';
+  }
+}
+
+async function renderLiveries() {
+  const f = $('l-aircraft').value;
+  const r = await fetch(`${API}/liveries` + (f ? `?aircraft=${encodeURIComponent(f)}` : ''));
+  const items = await r.json();
+  const el = $('l-results');
+  if (!items.length) { el.innerHTML = '<div class="empty">Todavía no hay liveries cargadas. Agregalas arriba (ej: avión B738, aerolínea ARG, livery "70 años").</div>'; return; }
+  el.innerHTML = items.map((l) => `
+    <div class="card">
+      <div class="head">
+        <span class="title"><span class="tag">${l.aircraft}</span> · ${l.airline}${l.airline_name ? ' · ' + l.airline_name : ''}</span>
+        <button class="btn danger" onclick="delLivery(${l.id})">quitar</button>
+      </div>
+      <div class="meta">Livery: ${l.livery}${l.notes ? ' — ' + l.notes : ''}</div>
+    </div>`).join('');
+}
+
+async function delLivery(id) {
+  await fetch(`${API}/liveries/${id}`, { method: 'DELETE' });
+  renderLiveries();
+}
+
+$('l-add').addEventListener('click', async () => {
+  const aircraft = $('l-aircraft-add').value.trim().toUpperCase();
+  const airline = $('l-airline-add').value.trim().toUpperCase();
+  const livery = $('l-livery-add').value.trim();
+  if (!aircraft || !airline) return;
+  await fetch(`${API}/liveries`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ aircraft, airline, livery }),
+  });
+  $('l-aircraft-add').value = ''; $('l-airline-add').value = ''; $('l-livery-add').value = '';
+  await refreshAircraft();
+  renderLiveries();
+});
+
+$('l-aircraft').addEventListener('change', renderLiveries);
+
+$('p-btn').addEventListener('click', planear);
+$('p-origen').addEventListener('keydown', (e) => { if (e.key === 'Enter') planear(); });
+
+async function planear() {
+  const origin = $('p-origen').value.trim();
+  if (!origin) { $('p-results').innerHTML = '<div class="empty">Poné un aeropuerto de origen.</div>'; return; }
+  const params = new URLSearchParams({
+    origin,
+    max_hours: parseFloat($('p-hours').value) || 2,
+    invent: $('p-invent').checked ? 'true' : 'false',
+  });
+  if ($('p-dest').value.trim()) params.set('dest', $('p-dest').value.trim());
+  if ($('p-aerolinea').value.trim()) params.set('airline', $('p-aerolinea').value.trim());
+  if ($('p-avion').value.trim()) params.set('aircraft', $('p-avion').value.trim());
+  const el = $('p-results');
+  el.innerHTML = '<div class="empty">Generando plan (chequeo VATSIM en vivo)…</div>';
+  try {
+    const r = await fetch(`${API}/plan?${params}`);
+    if (!r.ok) { el.innerHTML = `<div class="empty">${(await r.json()).detail ?? 'Error'}</div>`; return; }
+    const p = await r.json();
+    const routeBadge = p.route_real ? '<span class="badge real">ruta real</span>' : '<span class="badge inv">ruta inventada</span>';
+    const vatsimBadge = p.vatsim.in_use
+      ? '<span class="badge used">callsign OCUPADO en VATSIM</span>'
+      : '<span class="badge ok">callsign libre en VATSIM</span>';
+    el.innerHTML = `
+      <div class="card">
+        <div class="head">
+          <span class="title">${p.origin.icao} → ${p.dest.icao} ${routeBadge}</span>
+          <span>${vatsimBadge}</span>
+        </div>
+        <div class="meta">${p.origin.name} → ${p.dest.name}${p.dest.city ? ' (' + p.dest.city + ')' : ''}</div>
+        <div class="meta">Aerolínea: <span class="tag">${p.airline.icao}</span>${p.airline.name ? ' — ' + p.airline.name : ''}</div>
+        <div class="meta">Avión: ${p.aircraft ?? 'sin especificar'} · ${p.km ? p.km + ' km' : ''} ${p.hours ? '· ~' + p.hours + ' hs' : ''}</div>
+        <div class="meta">Vuelo: <span class="tag">${p.callsign ?? p.airline.icao + p.flight_number}</span> (número ${p.flight_number})</div>
+        <a class="simbrief" href="${p.simbrief_url}" target="_blank" rel="noopener">Abrir en SimBrief ↗</a>
+      </div>`;
+  } catch (e) {
+    el.innerHTML = '<div class="empty">Error de conexión.</div>';
+  }
+}
+
+refreshAircraft().then(renderLiveries);
+</script>
+</body>
+</html>

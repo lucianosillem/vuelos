@@ -1,0 +1,12 @@
+{
+  "liveries": [
+    {
+      "id": 1,
+      "aircraft": "A20N",
+      "airline": "ARG",
+      "airline_name": "Aerolíneas Argentinas",
+      "livery": "Default",
+      "notes": ""
+    }
+  ]
+}
