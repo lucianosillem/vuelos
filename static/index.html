@@ -99,13 +99,13 @@ td .tag { font-size:.9rem; }
       <label>Duración máx (hs)
         <input id="b-hours" type="number" min="0.5" max="12" step="0.5" value="2">
       </label>
-      <label>Avion (tipo ICAO, para el plan)
+      <label>Avion (tipo ICAO, filtra liveries)
         <input id="b-avion" list="aircraft-list" placeholder="B738 / A20N / MD11">
       </label>
       <label class="check"><input id="b-invent" type="checkbox"> Inventar vuelo si no hay ruta real</label>
     </div>
     <button id="b-btn" class="btn">Buscar rutas</button>
-    <p class="hint">Click en una ruta para ver los números de vuelo asociados y generar el plan (SimBrief + chequeo VATSIM).</p>
+    <p class="hint">Solo se muestran rutas de aerolíneas que tenés en liveries. Si elegís avión, filtra también por ese tipo. Click en una ruta para ver números de vuelo + SimBrief.</p>
     <div id="b-results" class="results"></div>
   </section>
 
@@ -215,6 +215,7 @@ async function buscarRutas() {
   if (origin) params.set('origin', origin);
   else if (country) params.set('country', country);
   if (airline) params.set('airline', airline);
+  if (aircraft) params.set('aircraft', aircraft);
   el.innerHTML = '<div class="empty">Buscando…</div>';
   try {
     const r = await fetch(`${API}/search?${params}`);

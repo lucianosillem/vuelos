@@ -121,6 +121,26 @@ def airport_by(code):
     return dict(row) if row else None
 
 
+def liveries_airlines(aircraft: str = ""):
+    """Códigos de aerolínea (ICAO/IATA) que tienen liveries cargadas.
+    Si se pasa `aircraft`, solo las aerolíneas con liveries de ese tipo de avión.
+    Devuelve un set de códigos (vacío = no filtrar)."""
+    acft = aircraft.strip().upper()
+    codes = set()
+    for l in _liveries:
+        if acft and l.get("aircraft", "").upper() != acft:
+            continue
+        al = l.get("airline", "").strip().upper()
+        if al:
+            codes.add(al)
+    return codes
+
+
+def liveries_aircraft_types():
+    """Tipos de avión (ICAO) presentes en las liveries cargadas."""
+    return {l.get("aircraft", "").upper() for l in _liveries if l.get("aircraft")}
+
+
 def est_duration_hours(km):
     if not km:
         return None
@@ -236,9 +256,13 @@ def api_search(
     origin: str = "",
     country: str = "",
     airline: str = "",
+    aircraft: str = "",
     max_hours: float = Query(2.0, ge=0.5, le=12),
     limit: int = Query(60, le=200),
 ):
+    # Filtrar por aerolíneas que tienen liveries cargadas (si hay alguna).
+    # Si se especificó un tipo de avión, solo aerolíneas con liveries de ese tipo.
+    allowed = liveries_airlines(aircraft)
     with get_db() as conn:
         sql = """SELECT r.airline, r.src, r.dst, r.equipment,
                         a.name src_name, a.city src_city, a.country src_country,
@@ -265,6 +289,13 @@ def api_search(
             al = airline.strip().upper()
             sql += " AND (r.airline = ? OR r.airline IN (SELECT iata FROM airlines WHERE icao=?))"
             params.extend([al, al])
+        if allowed:
+            # solo rutas cuya aerolínea tenga livery (por ICAO o IATA)
+            placeholders = ",".join("?" * len(allowed))
+            sql += (
+                f" AND (al.icao IN ({placeholders}) OR r.airline IN ({placeholders}))"
+            )
+            params.extend(list(allowed) * 2)
         sql += " GROUP BY r.airline, r.src, r.dst ORDER BY a.country, r.airline, r.dst"
         sql += f" LIMIT {int(limit)}"
         rows = conn.execute(sql, params).fetchall()
