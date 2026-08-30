@@ -45,6 +45,8 @@ FLTNUM_LO, FLTNUM_HI = 1000, 5999
 
 
 # ── Liveries (persistencia JSON) ───────────────────────────────────
+# Cada livery: {id, aircraft (tipo ICAO), airline (ICAO), airline_name,
+#               matricula (registro), folder (carpeta MSFS), notes}
 _lock = threading.Lock()
 _liveries = []
 
@@ -240,12 +242,14 @@ def api_search(
     with get_db() as conn:
         sql = """SELECT r.airline, r.src, r.dst, r.equipment,
                         a.name src_name, a.city src_city, a.country src_country,
-                        a.lat src_lat, a.lon src_lon,
+                        a.lat src_lat, a.lon src_lon, a.icao src_icao,
                         d.name dst_name, d.city dst_city, d.country dst_country,
-                        d.lat dst_lat, d.lon dst_lon
+                        d.lat dst_lat, d.lon dst_lon, d.icao dst_icao,
+                        al.icao airline_icao, al.name airline_name
                  FROM routes r
                  JOIN airports a ON a.iata = r.src
                  JOIN airports d ON d.iata = r.dst
+                 LEFT JOIN airlines al ON al.iata = r.airline
                  WHERE 1=1"""
         params = []
         if origin:
@@ -276,8 +280,12 @@ def api_search(
         out.append(
             {
                 "airline": r["airline"],
+                "airline_icao": r["airline_icao"],
+                "airline_name": r["airline_name"],
                 "src": r["src"],
                 "dst": r["dst"],
+                "src_icao": r["src_icao"],
+                "dst_icao": r["dst_icao"],
                 "src_name": f"{r['src_city']}, {r['src_country']}" if r["src_city"] else r["src_name"],
                 "dst_name": f"{r['dst_city']}, {r['dst_country']}" if r["dst_city"] else r["dst_name"],
                 "equipment": r["equipment"],
@@ -287,6 +295,71 @@ def api_search(
             }
         )
     return out
+
+
+# ── Números de vuelo asociados a una ruta ──────────────────────────
+@app.get("/api/route/flights")
+def api_route_flights(
+    airline: str = "",
+    src: str = "",
+    dst: str = "",
+    aircraft: str = "",
+    n: int = Query(4, ge=1, le=8),
+):
+    """Dada una ruta (airline + src + dst), genera números de vuelo plausibles
+    en la nomenclatura estándar de la aerolínea, verificados contra VATSIM,
+    cada uno con su URL de SimBrief."""
+    if not src or not dst:
+        raise HTTPException(400, "src y dst son obligatorios")
+    ap = airport_by(src)
+    dp = airport_by(dst)
+    if not ap or not ap.get("icao"):
+        raise HTTPException(404, f"Aeropuerto de origen no encontrado: {src}")
+    if not dp or not dp.get("icao"):
+        raise HTTPException(404, f"Aeropuerto de destino no encontrado: {dst}")
+
+    # aerolínea: si viene IATA o ICAO, resolver ICAO (callsign)
+    airline_icao = airline.strip().upper()
+    airline_name = None
+    if airline_icao:
+        with get_db() as conn:
+            row = conn.execute(
+                "SELECT * FROM airlines WHERE icao=? OR iata=? LIMIT 1",
+                (airline_icao, airline_icao),
+            ).fetchone()
+        if row:
+            airline_icao = row["icao"] or airline_icao
+            airline_name = row["name"]
+    if not airline_icao:
+        raise HTTPException(400, "airline es obligatoria para generar el callsign")
+
+    acft = aircraft.strip().upper() or "B738"
+    live = vatsim_callsigns()
+
+    results = []
+    tried = set()
+    while len(results) < n:
+        num = random.randint(FLTNUM_LO, FLTNUM_HI)
+        if num in tried:
+            continue
+        tried.add(num)
+        cs = f"{airline_icao}{num}"
+        results.append(
+            {
+                "flight_number": num,
+                "callsign": cs,
+                "in_use": cs in live,
+                "simbrief_url": simbrief_url(airline_icao, num, acft, ap["icao"], dp["icao"]),
+            }
+        )
+    return {
+        "src": ap["icao"],
+        "dst": dp["icao"],
+        "airline": airline_icao,
+        "airline_name": airline_name,
+        "aircraft": acft,
+        "flights": results,
+    }
 
 
 # ── Liveries ───────────────────────────────────────────────────────
@@ -307,15 +380,17 @@ def api_liveries(aircraft: str = ""):
 def api_liveries_add(payload: dict):
     aircraft = str(payload.get("aircraft", "")).strip().upper()
     airline = str(payload.get("airline", "")).strip().upper()
-    if not aircraft or not airline:
-        raise HTTPException(400, "aircraft y airline son obligatorios")
+    matricula = str(payload.get("matricula", "")).strip().upper()
+    if not aircraft:
+        raise HTTPException(400, "aircraft es obligatorio")
     with _lock:
         entry = {
             "id": next_livery_id(),
             "aircraft": aircraft,
             "airline": airline,
             "airline_name": str(payload.get("airline_name", "")).strip(),
-            "livery": str(payload.get("livery", "")).strip() or "Default",
+            "matricula": matricula,
+            "folder": str(payload.get("folder", "")).strip(),
             "notes": str(payload.get("notes", "")).strip(),
         }
         _liveries.append(entry)

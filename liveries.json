@@ -1,12 +1,643 @@
 {
   "liveries": [
     {
-      "id": 1,
       "aircraft": "A20N",
+      "airline": "SKU",
+      "airline_name": "Sky Airline",
+      "matricula": "CC-DBL",
+      "folder": "FBW A320\\FBW A320NX Sky Airline CC-DBL",
+      "notes": "",
+      "id": 1
+    },
+    {
+      "aircraft": "A20N",
+      "airline": "EZY",
+      "airline_name": "easyJet",
+      "matricula": "",
+      "folder": "FBW A320\\fbw-easyjetneo",
+      "notes": "",
+      "id": 2
+    },
+    {
+      "aircraft": "A20N",
+      "airline": "DLH",
+      "airline_name": "Lufthansa",
+      "matricula": "",
+      "folder": "FBW A320\\FlyByWire_A320neo_DLH Pack 4K",
+      "notes": "",
+      "id": 3
+    },
+    {
+      "aircraft": "A20N",
+      "airline": "TAM",
+      "airline_name": "LATAM Brasil",
+      "matricula": "",
+      "folder": "FBW A320\\flybywire-a320neo-LatamBrazil_Pack",
+      "notes": "",
+      "id": 4
+    },
+    {
+      "aircraft": "A20N",
+      "airline": "LAN",
+      "airline_name": "LATAM Chile",
+      "matricula": "",
+      "folder": "FBW A320\\flybywire-a320neo-LatamChile_Pack",
+      "notes": "",
+      "id": 5
+    },
+    {
+      "aircraft": "A20N",
+      "airline": "VLG",
+      "airline_name": "Vueling",
+      "matricula": "",
+      "folder": "FBW A320\\flybywire-a320neo-Vueling_2Pack",
+      "notes": "",
+      "id": 6
+    },
+    {
+      "aircraft": "A388",
+      "airline": "BAW",
+      "airline_name": "British Airways",
+      "matricula": "G-XLEL",
+      "folder": "FBW A380\\raimbotrax_a380_British_Airways_GXLEL_Clean",
+      "notes": "",
+      "id": 7
+    },
+    {
+      "aircraft": "A388",
+      "airline": "BAW",
+      "airline_name": "British Airways",
+      "matricula": "G-XLEL",
+      "folder": "FBW A380\\raimbotrax_a380_British_Airways_GXLEL_Dirty",
+      "notes": "",
+      "id": 8
+    },
+    {
+      "aircraft": "A388",
+      "airline": "UAE",
+      "airline_name": "Emirates",
+      "matricula": "A6-EOK",
+      "folder": "FBW A380\\raimbotrax_a380_Emirates_New_livery_A6EOK",
+      "notes": "",
+      "id": 9
+    },
+    {
+      "aircraft": "A388",
+      "airline": "DLH",
+      "airline_name": "Lufthansa",
+      "matricula": "D-AIMG",
+      "folder": "FBW A380\\raimbotrax_a380_Lufthansa_DAIMG",
+      "notes": "",
+      "id": 10
+    },
+    {
+      "aircraft": "A20N",
+      "airline": "JAT",
+      "airline_name": "JetSMART",
+      "matricula": "CC-AWA",
+      "folder": "Fenix\\FNX_320_IAE_SL_JetSmartCCAWA_4K",
+      "notes": "",
+      "id": 11
+    },
+    {
+      "aircraft": "A20N",
+      "airline": "JAT",
+      "airline_name": "JetSMART",
+      "matricula": "LV-HEK",
+      "folder": "Fenix\\FNX_320_IAE_SL_JetSmartLVHEK_4K",
+      "notes": "",
+      "id": 12
+    },
+    {
+      "aircraft": "A20N",
+      "airline": "",
+      "airline_name": "",
+      "matricula": "",
+      "folder": "Fenix\\fnx-aircraft-319-liveries",
+      "notes": "",
+      "id": 13
+    },
+    {
+      "aircraft": "A20N",
+      "airline": "JAT",
+      "airline_name": "JetSMART",
+      "matricula": "LV-KDP",
+      "folder": "Fenix\\fnx-aircraft-320-JESLV-KDP-IAE",
+      "notes": "",
+      "id": 14
+    },
+    {
+      "aircraft": "A20N",
+      "airline": "JAT",
+      "airline_name": "JetSMART",
+      "matricula": "LV-IVO",
+      "folder": "Fenix\\fnx-aircraft-320-jetsmart-lv-ivo-sl",
+      "notes": "",
+      "id": 15
+    },
+    {
+      "aircraft": "A20N",
+      "airline": "",
+      "airline_name": "",
+      "matricula": "",
+      "folder": "Fenix\\fnx-aircraft-320-liveries",
+      "notes": "",
+      "id": 16
+    },
+    {
+      "aircraft": "A20N",
+      "airline": "",
+      "airline_name": "",
+      "matricula": "",
+      "folder": "Fenix\\fnx-aircraft-321-liveries",
+      "notes": "",
+      "id": 17
+    },
+    {
+      "aircraft": "A20N",
+      "airline": "",
+      "airline_name": "",
+      "matricula": "",
+      "folder": "FSLabs\\fsl-a32x-liveries",
+      "notes": "",
+      "id": 18
+    },
+    {
+      "aircraft": "B38M",
       "airline": "ARG",
       "airline_name": "Aerolíneas Argentinas",
-      "livery": "Default",
-      "notes": ""
+      "matricula": "LV-KKD",
+      "folder": "iFly\\iFly Boeing 737 MAX 8 Aerolineas Argentinas LV-KKD",
+      "notes": "",
+      "id": 19
+    },
+    {
+      "aircraft": "B38M",
+      "airline": "ARG",
+      "airline_name": "Aerolíneas Argentinas",
+      "matricula": "LV-KKE",
+      "folder": "iFly\\iFly Boeing 737 MAX 8 Aerolineas Argentinas LV-KKE",
+      "notes": "",
+      "id": 20
+    },
+    {
+      "aircraft": "B38M",
+      "airline": "ARG",
+      "airline_name": "Aerolíneas Argentinas",
+      "matricula": "LV-GVD",
+      "folder": "iFly\\ifly-aircraft-737max8-arg-lvgvd",
+      "notes": "",
+      "id": 21
+    },
+    {
+      "aircraft": "B38M",
+      "airline": "ARG",
+      "airline_name": "Aerolíneas Argentinas",
+      "matricula": "LV-KID",
+      "folder": "iFly\\ifly-aircraft-737max8-ARG-LVKID",
+      "notes": "",
+      "id": 22
+    },
+    {
+      "aircraft": "A359",
+      "airline": "IBE",
+      "airline_name": "Iberia",
+      "matricula": "EC-NJM",
+      "folder": "Inibuilds\\inibuilds-aircraft-a350-900-ibe-njm",
+      "notes": "",
+      "id": 23
+    },
+    {
+      "aircraft": "A332",
+      "airline": "ARG",
+      "airline_name": "Aerolíneas Argentinas",
+      "matricula": "LV-GKP",
+      "folder": "Microsoft\\IniBuilds A330-200 ARG LV-GKP",
+      "notes": "",
+      "id": 24
+    },
+    {
+      "aircraft": "A332",
+      "airline": "ARG",
+      "airline_name": "Aerolíneas Argentinas",
+      "matricula": "LV-KAO",
+      "folder": "Microsoft\\IniBuilds A330-200 ARG LV-KAO",
+      "notes": "",
+      "id": 25
+    },
+    {
+      "aircraft": "A332",
+      "airline": "ARG",
+      "airline_name": "Aerolíneas Argentinas",
+      "matricula": "",
+      "folder": "Microsoft\\microsoft-aircraft-a330-200-AR",
+      "notes": "",
+      "id": 26
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "",
+      "airline_name": "",
+      "matricula": "N840TD",
+      "folder": "TFDi\\tfdidesign-aircraft-md-11fge-n840td",
+      "notes": "",
+      "id": 27
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "",
+      "airline_name": "",
+      "matricula": "N850TD",
+      "folder": "TFDi\\tfdidesign-aircraft-md-11fpw-n850td",
+      "notes": "",
+      "id": 28
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "",
+      "airline_name": "",
+      "matricula": "N820TD",
+      "folder": "TFDi\\tfdidesign-aircraft-md-11ge-n820td",
+      "notes": "",
+      "id": 29
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "",
+      "airline_name": "",
+      "matricula": "N830TD",
+      "folder": "TFDi\\tfdidesign-aircraft-md-11pw-n830td",
+      "notes": "",
+      "id": 30
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "",
+      "folder": "TFDi\\tfdidesign-md11f-ups-commons",
+      "notes": "",
+      "id": 31
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N250UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n250up",
+      "notes": "",
+      "id": 32
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N251UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n251up",
+      "notes": "",
+      "id": 33
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N252UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n252up",
+      "notes": "",
+      "id": 34
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N253UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n253up",
+      "notes": "",
+      "id": 35
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N254UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n254up",
+      "notes": "",
+      "id": 36
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N255UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n255up",
+      "notes": "",
+      "id": 37
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N256UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n256up",
+      "notes": "",
+      "id": 38
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N257UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n257up",
+      "notes": "",
+      "id": 39
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N258UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n258up",
+      "notes": "",
+      "id": 40
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N259UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n259up",
+      "notes": "",
+      "id": 41
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N260UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n260up",
+      "notes": "",
+      "id": 42
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N261UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n261up",
+      "notes": "",
+      "id": 43
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N262UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n262up",
+      "notes": "",
+      "id": 44
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N263UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n263up",
+      "notes": "",
+      "id": 45
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N264UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n264up",
+      "notes": "",
+      "id": 46
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N265UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n265up",
+      "notes": "",
+      "id": 47
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N273UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n273up",
+      "notes": "",
+      "id": 48
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N274UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n274up",
+      "notes": "",
+      "id": 49
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N275UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n275up",
+      "notes": "",
+      "id": 50
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N276UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n276up",
+      "notes": "",
+      "id": 51
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N278UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n278up",
+      "notes": "",
+      "id": 52
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N281UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n281up",
+      "notes": "",
+      "id": 53
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N284UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n284up",
+      "notes": "",
+      "id": 54
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N286UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n286up",
+      "notes": "",
+      "id": 55
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N287UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n287up",
+      "notes": "",
+      "id": 56
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N288UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n288up",
+      "notes": "",
+      "id": 57
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N289UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n289up",
+      "notes": "",
+      "id": 58
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N290UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n290up",
+      "notes": "",
+      "id": 59
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N291UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n291up",
+      "notes": "",
+      "id": 60
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N292UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n292up",
+      "notes": "",
+      "id": 61
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N293UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n293up",
+      "notes": "",
+      "id": 62
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "UPS",
+      "airline_name": "UPS",
+      "matricula": "N294UP",
+      "folder": "TFDi\\tfdidesign-md11f-ups-n294up",
+      "notes": "",
+      "id": 63
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "GEC",
+      "airline_name": "GECAS",
+      "matricula": "",
+      "folder": "TFDi\\tfdidesign-md11-gec-new-commons",
+      "notes": "",
+      "id": 64
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "GEC",
+      "airline_name": "GECAS",
+      "matricula": "",
+      "folder": "TFDi\\tfdidesign-md11-gec-new-dalca-missmatch",
+      "notes": "",
+      "id": 65
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "GEC",
+      "airline_name": "GECAS",
+      "matricula": "",
+      "folder": "TFDi\\tfdidesign-md11-gec-new-dalcb",
+      "notes": "",
+      "id": 66
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "GEC",
+      "airline_name": "GECAS",
+      "matricula": "",
+      "folder": "TFDi\\tfdidesign-md11-gec-new-dalcb-missmatch",
+      "notes": "",
+      "id": 67
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "GEC",
+      "airline_name": "GECAS",
+      "matricula": "",
+      "folder": "TFDi\\tfdidesign-md11-gec-new-dalcc",
+      "notes": "",
+      "id": 68
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "GEC",
+      "airline_name": "GECAS",
+      "matricula": "",
+      "folder": "TFDi\\tfdidesign-md11-gec-new-dalcc-farewell",
+      "notes": "",
+      "id": 69
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "GEC",
+      "airline_name": "GECAS",
+      "matricula": "",
+      "folder": "TFDi\\tfdidesign-md11-gec-new-dalcd",
+      "notes": "",
+      "id": 70
+    },
+    {
+      "aircraft": "MD11",
+      "airline": "GEC",
+      "airline_name": "GECAS",
+      "matricula": "",
+      "folder": "TFDi\\tfdidesign-md11-gec-new-dalcd-missmatch",
+      "notes": "",
+      "id": 71
     }
   ]
 }

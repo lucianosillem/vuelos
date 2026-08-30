@@ -1,0 +1,77 @@
+# Carpetas de liveries en X:\MSFS-Community-2024\Texture (PC de escritorio, via MeiLing)
+# Formato: <nivel1>\<nivel2> — una por línea
+FBW A320\FBW A320NX Sky Airline CC-DBL
+FBW A320\fbw-easyjetneo
+FBW A320\FlyByWire_A320neo_DLH Pack 4K
+FBW A320\flybywire-a320neo-LatamBrazil_Pack
+FBW A320\flybywire-a320neo-LatamChile_Pack
+FBW A320\flybywire-a320neo-Vueling_2Pack
+FBW A380\raimbotrax_a380_British_Airways_GXLEL_Clean
+FBW A380\raimbotrax_a380_British_Airways_GXLEL_Dirty
+FBW A380\raimbotrax_a380_Emirates_New_livery_A6EOK
+FBW A380\raimbotrax_a380_Lufthansa_DAIMG
+Fenix\FNX_320_IAE_SL_JetSmartCCAWA_4K
+Fenix\FNX_320_IAE_SL_JetSmartLVHEK_4K
+Fenix\fnx-aircraft-319-liveries
+Fenix\fnx-aircraft-320-JESLV-KDP-IAE
+Fenix\fnx-aircraft-320-jetsmart-lv-ivo-sl
+Fenix\fnx-aircraft-320-liveries
+Fenix\fnx-aircraft-321-liveries
+FSLabs\fsl-a32x-liveries
+iFly\iFly Boeing 737 MAX 8 Aerolineas Argentinas LV-KKD
+iFly\iFly Boeing 737 MAX 8 Aerolineas Argentinas LV-KKE
+iFly\ifly-aircraft-737max8-arg-lvgvd
+iFly\ifly-aircraft-737max8-ARG-LVKID
+Inibuilds\inibuilds-aircraft-a350-900-ibe-njm
+Microsoft\IniBuilds A330-200 ARG LV-GKP
+Microsoft\IniBuilds A330-200 ARG LV-KAO
+Microsoft\microsoft-aircraft-a330-200-AR
+TFDi\Installation instructions.txt
+TFDi\Installation instructions_1.txt
+TFDi\TFDi MD-11 Lufthansa Cargo New Design Fleet MSFS 2024_M6yE9.zip
+TFDi\TFDi MD-11 UPS fleet MSFS 2024_RqsNi.zip
+TFDi\tfdidesign-aircraft-md-11fge-n840td
+TFDi\tfdidesign-aircraft-md-11fpw-n850td
+TFDi\tfdidesign-aircraft-md-11ge-n820td
+TFDi\tfdidesign-aircraft-md-11pw-n830td
+TFDi\tfdidesign-md11f-ups-commons
+TFDi\tfdidesign-md11f-ups-n250up
+TFDi\tfdidesign-md11f-ups-n251up
+TFDi\tfdidesign-md11f-ups-n252up
+TFDi\tfdidesign-md11f-ups-n253up
+TFDi\tfdidesign-md11f-ups-n254up
+TFDi\tfdidesign-md11f-ups-n255up
+TFDi\tfdidesign-md11f-ups-n256up
+TFDi\tfdidesign-md11f-ups-n257up
+TFDi\tfdidesign-md11f-ups-n258up
+TFDi\tfdidesign-md11f-ups-n259up
+TFDi\tfdidesign-md11f-ups-n260up
+TFDi\tfdidesign-md11f-ups-n261up
+TFDi\tfdidesign-md11f-ups-n262up
+TFDi\tfdidesign-md11f-ups-n263up
+TFDi\tfdidesign-md11f-ups-n264up
+TFDi\tfdidesign-md11f-ups-n265up
+TFDi\tfdidesign-md11f-ups-n273up
+TFDi\tfdidesign-md11f-ups-n274up
+TFDi\tfdidesign-md11f-ups-n275up
+TFDi\tfdidesign-md11f-ups-n276up
+TFDi\tfdidesign-md11f-ups-n278up
+TFDi\tfdidesign-md11f-ups-n281up
+TFDi\tfdidesign-md11f-ups-n284up
+TFDi\tfdidesign-md11f-ups-n286up
+TFDi\tfdidesign-md11f-ups-n287up
+TFDi\tfdidesign-md11f-ups-n288up
+TFDi\tfdidesign-md11f-ups-n289up
+TFDi\tfdidesign-md11f-ups-n290up
+TFDi\tfdidesign-md11f-ups-n291up
+TFDi\tfdidesign-md11f-ups-n292up
+TFDi\tfdidesign-md11f-ups-n293up
+TFDi\tfdidesign-md11f-ups-n294up
+TFDi\tfdidesign-md11-gec-new-commons
+TFDi\tfdidesign-md11-gec-new-dalca-missmatch
+TFDi\tfdidesign-md11-gec-new-dalcb
+TFDi\tfdidesign-md11-gec-new-dalcb-missmatch
+TFDi\tfdidesign-md11-gec-new-dalcc
+TFDi\tfdidesign-md11-gec-new-dalcc-farewell
+TFDi\tfdidesign-md11-gec-new-dalcd
+TFDi\tfdidesign-md11-gec-new-dalcd-missmatch
