@@ -1,77 +1,87 @@
-# Carpetas de liveries en X:\MSFS-Community-2024\Texture (PC de escritorio, via MeiLing)
-# Formato: <nivel1>\<nivel2> — una por línea
-FBW A320\FBW A320NX Sky Airline CC-DBL
-FBW A320\fbw-easyjetneo
-FBW A320\FlyByWire_A320neo_DLH Pack 4K
-FBW A320\flybywire-a320neo-LatamBrazil_Pack
-FBW A320\flybywire-a320neo-LatamChile_Pack
-FBW A320\flybywire-a320neo-Vueling_2Pack
-FBW A380\raimbotrax_a380_British_Airways_GXLEL_Clean
-FBW A380\raimbotrax_a380_British_Airways_GXLEL_Dirty
-FBW A380\raimbotrax_a380_Emirates_New_livery_A6EOK
-FBW A380\raimbotrax_a380_Lufthansa_DAIMG
-Fenix\FNX_320_IAE_SL_JetSmartCCAWA_4K
-Fenix\FNX_320_IAE_SL_JetSmartLVHEK_4K
-Fenix\fnx-aircraft-319-liveries
-Fenix\fnx-aircraft-320-JESLV-KDP-IAE
-Fenix\fnx-aircraft-320-jetsmart-lv-ivo-sl
-Fenix\fnx-aircraft-320-liveries
-Fenix\fnx-aircraft-321-liveries
-FSLabs\fsl-a32x-liveries
-iFly\iFly Boeing 737 MAX 8 Aerolineas Argentinas LV-KKD
-iFly\iFly Boeing 737 MAX 8 Aerolineas Argentinas LV-KKE
-iFly\ifly-aircraft-737max8-arg-lvgvd
-iFly\ifly-aircraft-737max8-ARG-LVKID
-Inibuilds\inibuilds-aircraft-a350-900-ibe-njm
-Microsoft\IniBuilds A330-200 ARG LV-GKP
-Microsoft\IniBuilds A330-200 ARG LV-KAO
-Microsoft\microsoft-aircraft-a330-200-AR
-TFDi\Installation instructions.txt
-TFDi\Installation instructions_1.txt
-TFDi\TFDi MD-11 Lufthansa Cargo New Design Fleet MSFS 2024_M6yE9.zip
-TFDi\TFDi MD-11 UPS fleet MSFS 2024_RqsNi.zip
-TFDi\tfdidesign-aircraft-md-11fge-n840td
-TFDi\tfdidesign-aircraft-md-11fpw-n850td
-TFDi\tfdidesign-aircraft-md-11ge-n820td
-TFDi\tfdidesign-aircraft-md-11pw-n830td
-TFDi\tfdidesign-md11f-ups-commons
-TFDi\tfdidesign-md11f-ups-n250up
-TFDi\tfdidesign-md11f-ups-n251up
-TFDi\tfdidesign-md11f-ups-n252up
-TFDi\tfdidesign-md11f-ups-n253up
-TFDi\tfdidesign-md11f-ups-n254up
-TFDi\tfdidesign-md11f-ups-n255up
-TFDi\tfdidesign-md11f-ups-n256up
-TFDi\tfdidesign-md11f-ups-n257up
-TFDi\tfdidesign-md11f-ups-n258up
-TFDi\tfdidesign-md11f-ups-n259up
-TFDi\tfdidesign-md11f-ups-n260up
-TFDi\tfdidesign-md11f-ups-n261up
-TFDi\tfdidesign-md11f-ups-n262up
-TFDi\tfdidesign-md11f-ups-n263up
-TFDi\tfdidesign-md11f-ups-n264up
-TFDi\tfdidesign-md11f-ups-n265up
-TFDi\tfdidesign-md11f-ups-n273up
-TFDi\tfdidesign-md11f-ups-n274up
-TFDi\tfdidesign-md11f-ups-n275up
-TFDi\tfdidesign-md11f-ups-n276up
-TFDi\tfdidesign-md11f-ups-n278up
-TFDi\tfdidesign-md11f-ups-n281up
-TFDi\tfdidesign-md11f-ups-n284up
-TFDi\tfdidesign-md11f-ups-n286up
-TFDi\tfdidesign-md11f-ups-n287up
-TFDi\tfdidesign-md11f-ups-n288up
-TFDi\tfdidesign-md11f-ups-n289up
-TFDi\tfdidesign-md11f-ups-n290up
-TFDi\tfdidesign-md11f-ups-n291up
-TFDi\tfdidesign-md11f-ups-n292up
-TFDi\tfdidesign-md11f-ups-n293up
-TFDi\tfdidesign-md11f-ups-n294up
-TFDi\tfdidesign-md11-gec-new-commons
-TFDi\tfdidesign-md11-gec-new-dalca-missmatch
-TFDi\tfdidesign-md11-gec-new-dalcb
-TFDi\tfdidesign-md11-gec-new-dalcb-missmatch
-TFDi\tfdidesign-md11-gec-new-dalcc
-TFDi\tfdidesign-md11-gec-new-dalcc-farewell
-TFDi\tfdidesign-md11-gec-new-dalcd
-TFDi\tfdidesign-md11-gec-new-dalcd-missmatch
+# Carpetas de liveries reales de MSFS 2024 (PC escritorio, via MeiLing)
+# Formato: <tipo>\<nombre livery> — una por línea
+# Fenix: nombre = ICAO_Aerolinea-Matricula-hash4 (los últimos 4 se omiten)
+# PMDG: nombre = aerolinea_matricula_or_anio  o  "PMDG 737-800 Aerolineas Argentinas XXX"
+Fenix-319\baw-g-dbcb-cd61
+Fenix-319\ibe-ec-kub-dc1c
+Fenix-319\ity-ei-imh-fa18
+Fenix-319\lan-cc-cyl-92f7
+Fenix-319\tam-pr-myc-61e0
+Fenix-319\tam-pt-tmc-8f0c
+Fenix-319\vlg-ec-mir-451a
+Fenix-320\ava-hk-5319-3834
+Fenix-320\ava-n538av-fd33
+Fenix-320\ava-n750av-ab76
+Fenix-320\awe-n106us-657d
+Fenix-320\baw-g-euyr-4b66
+Fenix-320\cfg-d-aica-019f
+Fenix-320\cfg-d-aics-f1c9
+Fenix-320\cfg-d-aicu-e08f
+Fenix-320\dlh-d-aium-ac94
+Fenix-320\dlh-d-aizc-157e
+Fenix-320\dlh-d-aizd-5fe0
+Fenix-320\dlh-d-aizh-436c
+Fenix-320\dsm-lv-bsj-4b2b
+Fenix-320\ewg-d-aewk-5171
+Fenix-320\ewg-d-aewn-d841
+Fenix-320\ewl-9h-eur-baf7
+Fenix-320\ezy-g-ejcd-2def
+Fenix-320\ezy-g-ezom-c7ba
+Fenix-320\foo-oe-lvs-061c
+Fenix-320\ibe-ec-ieg-524c
+Fenix-320\ibe-ec-izh-cc14
+Fenix-320\ibe-ec-mdk-1102
+Fenix-320\ibs-ec-jfh-4d79
+Fenix-320\ibs-ec-lye-9e50
+Fenix-320\ibs-ec-muk-e3ee
+Fenix-320\ity-ei-dte-131a
+Fenix-320\lan-cc-baw-bbd0
+Fenix-320\lan-cc-bfe-ea48
+Fenix-320\lan-cc-bfu-9e88
+Fenix-320\lan-cc-bfw-e40f
+Fenix-320\lan-cc-bla-09c8
+Fenix-320\lan-cc-cop-4015
+Fenix-320\qtr-a7-ahh-53fd
+Fenix-320\qtr-a7-aho-980f
+Fenix-320\tam-pr-mbg-aa69
+Fenix-320\tam-pr-mhp-8432
+Fenix-320\tam-pr-tym-e0f7
+Fenix-320\tap-cs-tnj-3f83
+Fenix-320\viv-xa-vav-8cbf
+Fenix-320\viv-xa-vdj-5ac1
+Fenix-320\vlg-ec-jtr-c5fe
+Fenix-320\vlg-ec-kdt-3fa8
+Fenix-320\vlg-ec-lvu-9268
+Fenix-320\vlg-ec-mkm-5a1b
+Fenix-320\vlg-ec-mvn-2dd5
+Fenix-320\jes-lv-kdp-aoar
+Fenix-320\jetsmart-lv-ivo-sl
+Fenix-320\jetsmart-cc-awa
+Fenix-320\jetsmart-lv-hek
+Fenix-321\baw-g-euxe-b62b
+Fenix-321\cfg-d-aiac-82bb
+Fenix-321\cfg-d-aiad-2c83
+Fenix-321\cfg-d-aiai-c317
+Fenix-321\cfg-d-atca-3a34
+Fenix-321\cfg-d-atcf-5f13
+Fenix-321\dlh-d-aisz-ce12
+Fenix-321\ewg-d-aidq-94f2
+Fenix-321\ezy-g-ttih-ed02
+Fenix-321\ibe-ec-jgs-345b
+Fenix-321\lan-cc-beb-898e
+Fenix-321\swr-hb-ioo-e60b
+Fenix-321\tam-pt-mxg-9c0f
+Fenix-321\tam-pt-mxm-a6c4
+Fenix-321\vlg-ec-mlm-57f5
+Fenix-321\vlg-ec-nlv-0785
+Fenix-321\wzz-ha-ltf-3960
+PMDG-738\aerolineas_argentinas_lvgvc_or_2024
+PMDG-738\aeromexico_xaamg_or_2019
+PMDG-738\mrliveries_arg_lvggq_2026
+PMDG-738\PMDG 737-800 Aerolineas Argentinas CXS
+PMDG-738\PMDG 737-800 Aerolineas Argentinas CXT
+PMDG-738\PMDG 737-800 Aerolineas Argentinas FQY
+PMDG-738\PMDG 737-800 Aerolineas Argentinas FQZ
+PMDG-738\PMDG 737-800 Aerolineas Argentinas FUA
+PMDG-738\PMDG 737-800 Aerolineas Argentinas FUB
+PMDG-738\PMDG 737-800 Aerolineas Argentinas FUC
