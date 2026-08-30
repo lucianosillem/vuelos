@@ -9,7 +9,6 @@ FBW A380\raimbotrax_a380_British_Airways_GXLEL_Clean
 FBW A380\raimbotrax_a380_British_Airways_GXLEL_Dirty
 FBW A380\raimbotrax_a380_Emirates_New_livery_A6EOK
 FBW A380\raimbotrax_a380_Lufthansa_DAIMG
-FSLabs\fsl-a32x-liveries
 Inibuilds\inibuilds-aircraft-a350-900-ibe-njm
 Microsoft\IniBuilds A330-200 ARG LV-GKP
 Microsoft\IniBuilds A330-200 ARG LV-KAO

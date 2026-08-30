@@ -2,6 +2,7 @@
 # Formato: <tipo>\<nombre livery> — una por línea
 # Fenix: nombre = ICAO_Aerolinea-Matricula-hash4 (los últimos 4 se omiten)
 # PMDG: nombre = aerolinea_matricula_or_anio  o  "PMDG 737-800 Aerolineas Argentinas XXX"
+# FSLabs: dentro de SimObjects\Airplanes\<Avión> — nombre = Airline ICAO-Matricula
 Fenix-319\baw-g-dbcb-cd61
 Fenix-319\ibe-ec-kub-dc1c
 Fenix-319\ity-ei-imh-fa18
@@ -85,3 +86,5 @@ PMDG-738\PMDG 737-800 Aerolineas Argentinas FQZ
 PMDG-738\PMDG 737-800 Aerolineas Argentinas FUA
 PMDG-738\PMDG 737-800 Aerolineas Argentinas FUB
 PMDG-738\PMDG 737-800 Aerolineas Argentinas FUC
+FSLabs-321\jes-cc-awt
+FSLabs-321\jes-cc-dif

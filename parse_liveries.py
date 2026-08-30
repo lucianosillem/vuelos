@@ -25,6 +25,7 @@ AIRCRAFT_BY_TOP = {
     "Fenix-320": "A320",
     "Fenix-321": "A321",
     "PMDG-738": "B738",
+    "FSLabs-321": "A21N",
 }
 # ── Tipos de avión por carpeta nivel-1 (formato legacy) ────────────
 AIRCRAFT_BY_TOP_LEGACY = {
@@ -146,6 +147,17 @@ def parse_new(top, name):
                 m2 = re.search(r"\b(?P<m>(?:LV|CC|EC|EI|D-|G-|N|XA|HK|CS|OE|PR|PT|HB|A6|9H)-?[A-Z0-9]{2,5})\b", name)
                 if m2:
                     matricula = normalize_matricula(m2.group("m"))
+
+    elif top.startswith("FSLabs"):
+        # FSLabs: "jes-cc-awt" → aerolínea 3 letras + matrícula (A321neo)
+        m = re.match(r"^(?P<airline>[a-z]{3})[-_ ]?(?P<matricula>[a-z0-9-]+)$", name, re.IGNORECASE)
+        if m:
+            airline_icao, airline_name = parse_airline_icao(m.group("airline"))
+            matricula = normalize_matricula(m.group("matricula"))
+        else:
+            m2 = re.search(r"\b(?P<m>(?:CC|LV|EC|EI|N)-?[A-Z0-9]{3,4})\b", name)
+            if m2:
+                matricula = normalize_matricula(m2.group("m"))
 
     return {
         "aircraft": aircraft,
