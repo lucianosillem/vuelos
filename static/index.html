@@ -114,7 +114,11 @@ td .tag { font-size:.9rem; }
       <label>Filtrar por avión
         <select id="l-aircraft"><option value="">Todos</option></select>
       </label>
-      <div class="add-form row">
+      <div class="row" style="align-items:flex-end; margin-top:22px">
+        <button id="l-live" class="btn mini">🛰 Ver en vivo</button>
+        <span id="l-live-status" class="muted" style="font-size:.8rem"></span>
+      </div>
+      <div class="add-form row" style="grid-column:1/-1">
         <input id="l-aircraft-add" placeholder="Avión (B738)" maxlength="6">
         <input id="l-airline-add" placeholder="Aerol. (ARG)" maxlength="3">
         <input id="l-matricula-add" placeholder="Matrícula (LV-KKD)">
@@ -301,16 +305,39 @@ async function renderLiveries() {
       <thead><tr><th>Avion</th><th>Aerolínea</th><th>Matrícula</th><th>Carpeta</th><th></th></tr></thead>
       <tbody>
         ${items.map((l) => `
-          <tr>
+          <tr id="liv-${l.id}">
             <td><span class="tag">${l.aircraft}</span></td>
             <td>${l.airline}${l.airline_name ? ' <span class="muted">(' + l.airline_name + ')</span>' : ''}</td>
-            <td>${l.matricula || '<span class="muted">—</span>'}</td>
+            <td>${l.matricula || '<span class="muted">—</span>'}<span class="live-badge" id="live-${l.id}"></span></td>
             <td class="muted" style="font-size:.75rem">${l.folder || l.notes || ''}</td>
             <td><button class="btn danger" onclick="delLivery(${l.id})">quitar</button></td>
           </tr>`).join('')}
       </tbody>
     </table>`;
 }
+
+// estado en vivo (adsb.lol) de las liveries
+$('l-live').addEventListener('click', async () => {
+  const f = $('l-aircraft').value;
+  const status = $('l-live-status');
+  status.textContent = 'Consultando en vivo…';
+  try {
+    const r = await fetch(`${API}/adsb/liveries` + (f ? `?aircraft=${encodeURIComponent(f)}` : ''));
+    const items = await r.json();
+    // limpiar badges previos
+    document.querySelectorAll('.live-badge').forEach((b) => b.innerHTML = '');
+    const enAire = items.filter((it) => it.in_air);
+    enAire.forEach((it) => {
+      const badge = document.getElementById(`live-${it.id}`);
+      if (badge) {
+        badge.innerHTML = ` <span class="badge ok" title="${it.callsign} @ ${it.altitude ?? '?'} ft">✈ ${it.callsign}</span>`;
+      }
+    });
+    status.textContent = ` ${enAire.length} en el aire de ${items.length} con matrícula`;
+  } catch (e) {
+    status.textContent = ' Error consultando en vivo';
+  }
+});
 
 async function delLivery(id) {
   await fetch(`${API}/liveries/${id}`, { method: 'DELETE' });

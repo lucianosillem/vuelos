@@ -449,6 +449,94 @@ def api_vatsim_cs(cs: str):
     return {"callsign": cs, "in_use": cs in live, "checked_at": int(time.time())}
 
 
+# ── ADS-B en vivo (adsb.lol, sin key) ──────────────────────────────
+_adsb_cache = {"ts": 0.0, "data": {}}
+
+
+def adsb_by_reg(reg: str):
+    """Busca en adsb.lol el estado actual de una matrícula (si está en vuelo,
+    devuelve callsign, hex, altitud, etc). Sin API key."""
+    reg = reg.strip().upper().replace(" ", "")
+    now = time.time()
+    # cache corto (90s) por matrícula
+    hit = _adsb_cache["data"].get(reg)
+    if hit and now - _adsb_cache["ts"] < 90:
+        return hit
+    try:
+        req = urllib.request.urlopen(
+            f"https://api.adsb.lol/v2/reg/{reg}", timeout=15
+        )
+        d = json.loads(req.read().decode())
+        ac = d.get("ac", []) or []
+        result = None
+        if ac:
+            a = ac[0]
+            result = {
+                "callsign": (a.get("flight") or "").strip() or None,
+                "hex": a.get("hex"),
+                "reg": a.get("r"),
+                "altitude": a.get("alt_baro"),
+                "groundspeed": a.get("gs"),
+                "lat": a.get("lat"),
+                "lon": a.get("lon"),
+                "squawk": a.get("squawk"),
+            }
+        _adsb_cache["ts"] = now
+        _adsb_cache["data"][reg] = result
+        return result
+    except Exception:
+        return None
+
+
+@app.get("/api/adsb/reg")
+def api_adsb_reg(reg: str):
+    """Estado ADS-B en vivo de una matrícula (callsign actual si está volando)."""
+    if not reg:
+        raise HTTPException(400, "reg es obligatorio")
+    state = adsb_by_reg(reg)
+    return {"reg": reg.upper(), "in_air": state is not None, **({"flight": state} if state else {})}
+
+
+@app.get("/api/adsb/liveries")
+def api_adsb_liveries(aircraft: str = ""):
+    """Estado en vivo de las liveries: para cada matrícula, si está en el aire
+    y con qué callsign. Consultas paralelas (máx ~12 a la vez). Filtrar por aircraft."""
+    import concurrent.futures
+
+    acft = aircraft.strip().upper()
+    targets = []
+    for l in _liveries:
+        if acft and l.get("aircraft", "").upper() != acft:
+            continue
+        reg = l.get("matricula", "").strip().upper()
+        if not reg:
+            continue
+        targets.append((l, reg))
+
+    out = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=12) as ex:
+        future_map = {ex.submit(adsb_by_reg, reg): (l, reg) for (l, reg) in targets}
+        for fut in concurrent.futures.as_completed(future_map):
+            l, reg = future_map[fut]
+            try:
+                state = fut.result()
+            except Exception:
+                state = None
+            out.append({
+                "id": l["id"],
+                "aircraft": l.get("aircraft"),
+                "airline": l.get("airline"),
+                "matricula": reg,
+                "folder": l.get("folder"),
+                "in_air": state is not None,
+                "callsign": state.get("callsign") if state else None,
+                "altitude": state.get("altitude") if state else None,
+                "groundspeed": state.get("groundspeed") if state else None,
+                "squawk": state.get("squawk") if state else None,
+            })
+    return out
+
+
 # ── Plan de vuelo ──────────────────────────────────────────────────
 @app.get("/api/plan")
 def api_plan(
